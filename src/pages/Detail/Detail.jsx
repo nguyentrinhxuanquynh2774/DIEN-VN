@@ -1,5 +1,5 @@
 import styles from './Detail.module.css';
-import  PostDetailInfoInteractive from '../../components/Post/PostDetailInfo/PostDetailInfoInteractive.jsx';
+import PostDetailInfoInteractive from '../../components/Post/PostDetailInfo/PostDetailInfoInteractive.jsx';
 import ExpandableText from '../../components/Common/ExpandableText/ExpandableText.jsx';
 import { useParams, useLocation } from 'react-router-dom';
 import React, { useEffect, useState, useRef } from 'react';
@@ -191,10 +191,9 @@ export default function Detail() {
 
     return (
         <div className={styles.container}>
-           
             <div className={styles.contentWrapper}>
                 <div className={styles.contentwrapperLeft}>                  
-                    <img src={post.imageUrl} className={styles.postImage} />           
+                    <img src={post.imageUrl} className={styles.postImage} alt={post.title} />           
                 </div>
 
                 <div className={styles.contentwrapperRight}>
@@ -209,33 +208,33 @@ export default function Detail() {
                     </div>
 
                     <CommentSection
-                    postAuthorId={post.userId}
-                    comments={post.comments}
-                    user={user}
-                    replyingTo={replyingTo}
-                    setReplyingTo={setReplyingTo}
-                    commentText={commentText}
-                    setCommentText={setCommentText}
-                    isSubmitting={isSubmitting}
-                    handleSubmitComment={handleSubmitComment}
-                    commentInputRef={commentInputRef}
-                    formatRelativeTime={formatRelativeTime}
+                        postAuthorId={post.userId}
+                        comments={post.comments}
+                        user={user}
+                        replyingTo={replyingTo}
+                        setReplyingTo={setReplyingTo}
+                        commentText={commentText}
+                        setCommentText={setCommentText}
+                        isSubmitting={isSubmitting}
+                        handleSubmitComment={handleSubmitComment}
+                        commentInputRef={commentInputRef}
+                        formatRelativeTime={formatRelativeTime}
                     />
                 </div>
             </div>
             <div className={styles.productTagsSection}>
-                        <h3>Chi tiết sản phẩm</h3>
-                        <div className={ styles.tagList}>
-                            {post.tags && post.tags.length > 0 ? (
-                                post.tags.map(tag => (
-                                    <span key={tag.id} className={styles.productTagItem}>
-                                        {tag.name}
-                                    </span>
-                                ))
-                            ) : (
-                                <span className={styles.noTags}>Sản phẩm này chưa cập nhật thông tin.</span>
-                            )}
-                        </div>
+                <h3>Chi tiết sản phẩm</h3>
+                <div className={styles.tagList}>
+                    {post.tags && post.tags.length > 0 ? (
+                        post.tags.map(tag => (
+                            <span key={tag.id} className={styles.productTagItem}>
+                                {tag.name}
+                            </span>
+                        ))
+                    ) : (
+                        <span className={styles.noTags}>Sản phẩm này chưa cập nhật thông tin.</span>
+                    )}
+                </div>
             </div>
         </div>
     );
