@@ -1,0 +1,23 @@
+.text {
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    word-break: break-word; 
+    white-space: normal;     
+    overflow-wrap: anywhere;
+    color: var(--card-text-title);
+}
+
+.toggle {
+    background: none;
+    border: none;
+    color:var(--card-text-title);
+    font-size: 12px;
+    cursor: pointer;
+    padding: 0;
+    margin-top: 2px;    color: var(--color-button);
+
+}
+.toggle:hover {
+    color: #fff;
+}

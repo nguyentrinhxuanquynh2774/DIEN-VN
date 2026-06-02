@@ -1,0 +1,442 @@
+/* ── Overlay ── */
+.overlay {
+    position: fixed;
+    inset: 0;
+    z-index: 1000;
+    background: rgba(0, 0, 0, 0.55);
+    backdrop-filter: blur(6px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 16px;
+    animation: fadeIn 0.2s ease;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to   { opacity: 1; }
+}
+
+/* ── Modal shell ── */
+.modal {
+    background: var(--color-card);
+    border-radius: 20px;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    box-shadow: 0 24px 60px rgba(0, 0, 0, 0.3);
+    width: 100%;
+    max-width: 860px;
+    max-height: 90vh;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    animation: slideUp 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+@keyframes slideUp {
+    from { opacity: 0; transform: translateY(24px) scale(0.97); }
+    to   { opacity: 1; transform: translateY(0)   scale(1);    }
+}
+
+/* ── Modal header ── */
+.modalHeader {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 18px 24px 16px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    flex-shrink: 0;
+}
+
+.modalTitle {
+    font-size: 17px;
+    font-weight: 700;
+    color: var(--color-hotfontcolor);
+    letter-spacing: 0.3px;
+}
+
+.closeBtn {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    border: none;
+    background: rgba(0, 0, 0, 0.08);
+    color: rgba(0, 0, 0, 0.7);
+    font-size: 18px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: background 0.2s, color 0.2s;
+    line-height: 1;
+}
+
+.closeBtn:hover {
+    background: rgba(255, 255, 255, 0.15);
+    color: #1a1a1a;
+}
+
+/* ── Body: two-column layout ── */
+.modalBody {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0;
+    overflow: hidden;
+    flex: 1;
+    min-height: 0;
+}
+
+/* ── Left: image zone ── */
+.imageZone {
+    border-right: 1px solid rgba(0, 0, 0, 0.08);
+    background: rgba(0, 0, 0, 0.2);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 420px;
+    position: relative;
+    overflow: hidden;
+}
+
+.imagePlaceholder {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 12px;
+    cursor: pointer;
+    padding: 24px;
+    text-align: center;
+    transition: opacity 0.2s;
+}
+
+.imagePlaceholder:hover { opacity: 0.75; }
+
+.uploadIcon {
+    width: 56px;
+    height: 56px;
+    border-radius: 50%;
+    background: rgba(0, 0, 0, 0.07);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: rgba(0, 0, 0, 0.5);
+}
+
+.placeholderText {
+    font-size: 14px;
+    color: rgba(0, 0, 0, 0.5);
+    font-weight: 500;
+}
+
+.placeholderSub {
+    font-size: 11px;
+    color: rgba(0, 0, 0, 0.3);
+    margin-top: -6px;
+}
+
+.previewImg {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    object-position: center;
+}
+
+.changeImgBtn {
+    position: absolute;
+    bottom: 12px;
+    right: 12px;
+    padding: 6px 14px;
+    border-radius: 20px;
+    border: none;
+    background: rgba(0, 0, 0, 0.1);
+    color: #fff;
+    font-size: 12px;
+    font-weight: 600;
+    cursor: pointer;
+    backdrop-filter: blur(8px);
+    transition: background 0.2s;
+}
+
+.changeImgBtn:hover { background: rgba(0, 0, 0, 0.55); }
+
+/* ── Right: form ── */
+.formZone {
+    display: flex;
+    flex-direction: column;
+    overflow-y: auto;
+    padding: 20px 22px 16px;
+    gap: 14px;
+}
+
+/* scrollbar subtle */
+.formZone::-webkit-scrollbar { width: 4px; }
+.formZone::-webkit-scrollbar-track { background: transparent; }
+.formZone::-webkit-scrollbar-thumb { background: rgba(0,0,0,0.15); border-radius: 4px; }
+
+/* ── Field groups ── */
+.fieldGroup {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.label {
+    font-size: 11px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.8px;
+    color: rgba(0, 0, 0, 0.45);
+}
+
+.input,
+.textarea,
+.select {
+    background: rgba(0, 0, 0, 0.06);
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+    padding: 10px 13px;
+    font-size: 13px;
+    color: var(--color-hotfontcolor, #fff);
+    outline: none;
+    transition: border-color 0.2s, background 0.2s;
+    font-family: inherit;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.input::placeholder,
+.textarea::placeholder { color: rgba(0,0,0,0.25); }
+
+.input:focus,
+.textarea:focus,
+.select:focus {
+    border-color: var(--color-button);
+    background: rgba(0, 0, 0, 0.09);
+}
+
+.textarea {
+    resize: vertical;
+    min-height: 80px;
+    line-height: 1.5;
+}
+
+.select {
+    appearance: none;
+    cursor: pointer;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' fill='none' viewBox='0 0 24 24'%3E%3Cpath stroke='rgba(255,255,255,0.4)' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M6 9l6 6 6-6'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 13px center;
+    padding-right: 36px;
+}
+
+.select option {
+    background: #2a2a2a;
+    color: #fff;
+}
+
+/* ── Tags input ── */
+.tagsWrapper {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    background: rgba(0, 0, 0, 0.06);
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+    padding: 8px 10px;
+    min-height: 42px;
+    cursor: text;
+    transition: border-color 0.2s;
+}
+
+.tagsWrapper:focus-within { border-color: var(--color-button); }
+
+.tag {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    padding: 3px 10px;
+    border-radius: 20px;
+    background: var(--color-button, #8b6f5c);
+    color: #1a1a1a;
+    font-size: 11px;
+    font-weight: 600;
+}
+
+.tagRemove {
+    cursor: pointer;
+    opacity: 0.7;
+    font-size: 13px;
+    line-height: 1;
+    transition: opacity 0.15s;
+    border: none;
+    background: none;
+    color: inherit;
+    padding: 0;
+}
+
+.tagRemove:hover { opacity: 1; }
+
+.tagInput {
+    flex: 1;
+    min-width: 80px;
+    border: none;
+    background: transparent;
+    outline: none;
+    font-size: 13px;
+    color: var(--color-hotfontcolor);
+    font-family: inherit;
+}
+
+.tagInput::placeholder { color: rgba(0,0,0,0.25); }
+
+.tagHint {
+    font-size: 10px;
+    color: rgba(0,0,0,0.25);
+    margin-top: 3px;
+}
+
+/* ── Style suggestion reveal ── */
+.suggestionWrapper {
+    margin-top: 8px;
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    animation: revealDown 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+@keyframes revealDown {
+    from { opacity: 0; transform: translateY(-6px); }
+    to   { opacity: 1; transform: translateY(0); }
+}
+
+.suggestionInput {
+    font-style: italic;
+}
+
+.suggestionWrapper .tagHint strong {
+    color: rgba(0, 0, 0, 0.5);
+    font-style: normal;
+}
+
+/* ── Occasion tag: màu khác để phân biệt với product tag ── */
+.tagOccasion {
+    background: rgba(0, 0, 0, 0.12);
+    color: rgba(0, 0, 0, 0.85);
+    border: 1px solid rgba(0, 0, 0, 0.18);
+}
+
+/* ── Char count ── */
+.charCount {
+    font-size: 10px;
+    color: rgba(0,0,0,0.3);
+    text-align: right;
+    margin-top: -4px;
+}
+.charCount.warn { color: #ff6b6b; }
+
+/* ── Footer ── */
+.modalFooter {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 10px;
+    padding: 14px 24px 18px;
+    border-top: 1px solid rgba(0, 0, 0, 0.08);
+    flex-shrink: 0;
+}
+
+.cancelBtn {
+    padding: 9px 20px;
+    border-radius: 10px;
+    border: 1px solid rgba(0, 0, 0, 0.12);
+    background: transparent;
+    color: rgba(0, 0, 0, 0.6);
+    font-size: 13px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background 0.2s, color 0.2s;
+}
+
+.cancelBtn:hover {
+    background: rgba(0, 0, 0, 0.07);
+    color: #1a1a1a;
+}
+
+.submitBtn {
+    padding: 9px 24px;
+    border-radius: 10px;
+    border: none;
+    background: var(--color-button);
+    color: #1a1a1a;
+    font-size: 13px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: filter 0.2s, transform 0.15s, opacity 0.2s;
+    letter-spacing: 0.3px;
+}
+
+.submitBtn:hover:not(:disabled) {
+    filter: brightness(1.15);
+    transform: scale(1.02);
+}
+
+.submitBtn:disabled {
+    opacity: 0.45;
+    cursor: not-allowed;
+}
+
+/* ── Loading spinner inside button ── */
+.spinner {
+    display: inline-block;
+    width: 14px;
+    height: 14px;
+    border: 2px solid rgba(0,0,0,0.35);
+    border-top-color: #d5d1d1;
+    border-radius: 50%;
+    animation: spin 0.6s linear infinite;
+    vertical-align: middle;
+    margin-right: 6px;
+}
+
+@keyframes spin {
+    to { transform: rotate(360deg); }
+}
+
+/* ── Progress bar (upload) ── */
+.progressBar {
+    height: 3px;
+    background: rgba(0,0,0,0.08);
+    border-radius: 2px;
+    overflow: hidden;
+}
+
+.progressFill {
+    height: 100%;
+    background: var(--color-button);
+    border-radius: 2px;
+    transition: width 0.3s ease;
+}
+
+/* ── Error banner ── */
+.errorBanner {
+    background: rgba(0, 71, 87, 0.15);
+    border: 1px solid rgba(0, 71, 87, 0.3);
+    border-radius: 8px;
+    padding: 10px 13px;
+    font-size: 12px;
+    color: #ff6b6b;
+}
+
+/* ── Responsive ── */
+@media (max-width: 620px) {
+    .modalBody {
+        grid-template-columns: 1fr;
+    }
+    .imageZone {
+        min-height: 240px;
+        border-right: none;
+        border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+    }
+    .modal {
+        max-height: 95vh;
+    }
+}

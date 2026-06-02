@@ -1,0 +1,251 @@
+/* src/pages/Explore/Explore.module.css */
+
+.container {
+    margin-top: 80px;
+    padding: 20px 32px;
+    min-height: 100vh;
+    background: var(--color-background);
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+/* ── Toolbar ── */
+.toolbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    flex-wrap: wrap;
+}
+
+.toolbarLeft {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    flex-wrap: wrap;
+}
+
+.pageTitle {
+    font-size: 24px;
+    font-weight: 800;
+    color: var(--color-hotfontcolor);
+    letter-spacing: -0.5px;
+}
+
+.queryBadge {
+    display: inline-flex;
+    align-items: center;
+    padding: 6px 14px;
+    border-radius: 20px;
+    background: var(--color-button);
+    color: #fff;
+    font-size: 13px;
+    font-weight: 600;
+}
+
+.clearFiltersBtn {
+    padding: 5px 12px;
+    border-radius: 20px;
+    border: 1.5px solid rgba(0,0,0,0.15);
+    background: transparent;
+    color: rgba(0,0,0,0.5);
+    font-size: 12px;
+    font-weight: 600;
+    cursor: pointer;
+    font-family: inherit;
+    transition: all 0.15s;
+}
+.clearFiltersBtn:hover { border-color: #ff4d4d; color: #ff4d4d; }
+
+.filterToggleBtn {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    padding: 8px 16px;
+    border-radius: 12px;
+    border: 1.5px solid rgba(0,0,0,0.1);
+    background: var(--color-card, #fff);
+    color: rgba(0,0,0,0.6);
+    font-size: 13px;
+    font-weight: 600;
+    cursor: pointer;
+    white-space: nowrap;
+    transition: all 0.2s;
+    font-family: inherit;
+    position: relative;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+}
+.filterToggleBtn:hover { border-color: var(--color-button); }
+.filterToggleActive {
+    background: var(--color-button);
+    color: #fff;
+    border-color: var(--color-button);
+}
+
+.filterDot {
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    background: #fff;
+    position: absolute;
+    top: 6px;
+    right: 6px;
+}
+.filterToggleBtn:not(.filterToggleActive) .filterDot {
+    background: var(--color-button);
+}
+
+/* ── Filter panel ── */
+.filterPanel {
+    background: var(--color-card, #fff);
+    border: 1px solid rgba(0,0,0,0.08);
+    border-radius: 16px;
+    padding: 16px 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    box-shadow: 0 4px 16px rgba(0,0,0,0.06);
+    animation: slideDown 0.2s ease;
+}
+
+@keyframes slideDown {
+    from { opacity: 0; transform: translateY(-8px); }
+    to   { opacity: 1; transform: translateY(0); }
+}
+
+.filterGroup {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.filterLabel {
+    font-size: 10px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: rgba(0,0,0,0.35);
+}
+
+.filterChips {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 7px;
+}
+
+.chip {
+    padding: 5px 13px;
+    border-radius: 20px;
+    border: 1.5px solid rgba(0,0,0,0.1);
+    background: transparent;
+    color: rgba(0,0,0,0.55);
+    font-size: 12px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.15s;
+    font-family: inherit;
+}
+.chip:hover { border-color: var(--color-button); color: var(--color-button); }
+.chipActive, .chipActive:hover {
+    background: var(--color-button);
+    border-color: var(--color-button);
+    color: #fff;
+}
+
+
+
+/* ── Tabs ── */
+.tabBar {
+    display: flex;
+    gap: 8px;
+}
+
+.tab {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 7px 18px;
+    border-radius: 10px;
+    border: 1.5px solid rgba(0,0,0,0.1);
+    background: transparent;
+    color: rgba(0,0,0,0.5);
+    font-size: 13px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s;
+    font-family: inherit;
+}
+.tab:hover { border-color: var(--color-button); color: var(--color-button); }
+.tabActive {
+    background: var(--color-button);
+    border-color: var(--color-button);
+    color: #fff;
+}
+
+.tabCount {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 20px;
+    height: 18px;
+    padding: 0 5px;
+    border-radius: 9px;
+    background: rgba(0,0,0,0.1);
+    font-size: 11px;
+    font-weight: 700;
+}
+.tabActive .tabCount { background: rgba(255,255,255,0.25); }
+
+/* ── Editorial Grid ── */
+.editorialGrid {
+    width: 100%;
+    max-width: 1400px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 20px;
+}
+
+/* ── States ── */
+.loadingState {
+    display: flex;
+    justify-content: center;
+    padding: 80px 0;
+}
+
+.loadingDots { display: flex; gap: 8px; }
+
+.dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: var(--color-button);
+    animation: wave 1.2s infinite ease-in-out;
+}
+.dot:nth-child(1) { animation-delay: 0s; }
+.dot:nth-child(2) { animation-delay: 0.2s; }
+.dot:nth-child(3) { animation-delay: 0.4s; }
+
+@keyframes wave {
+    0%, 100% { transform: translateY(0); opacity: 0.3; }
+    50%       { transform: translateY(-8px); opacity: 1; }
+}
+
+.emptyState {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 80px 0;
+    gap: 10px;
+    color: rgba(0,0,0,0.4);
+}
+.emptyIcon { font-size: 40px; }
+.emptyState p { font-size: 16px; font-weight: 600; color: rgba(0,0,0,0.5); }
+.emptyState span { font-size: 13px; opacity: 0.7; }
+
+/* ── Responsive ── */
+@media (max-width: 1280px) { .editorialGrid { grid-template-columns: repeat(4, 1fr); } }
+@media (max-width: 900px)  { .editorialGrid { grid-template-columns: repeat(3, 1fr); } .container { padding: 16px; } }
+@media (max-width: 600px)  { .editorialGrid { grid-template-columns: repeat(2, 1fr); } }

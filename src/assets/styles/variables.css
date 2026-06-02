@@ -1,0 +1,36 @@
+:root {
+  /* Colors */
+  --color-gradient:  #BF9673 ;
+  --color-background:  linear-gradient(135deg, var(--color-gradient) 0%, #FAF6F0 60%, #EFE3D5 100%);
+  --color-navbar:  #8B6347;
+  --color-hotpost:  color-mix(in srgb, #5C3D2E 60%, transparent);
+  --color-card:#FDFAF6;
+  --color-tag: #8B6347;
+  --color-fonttagcolor:  #5C3D2E;
+
+  --color-button:  #8B6347;
+  --color-hotnumbercolor: #5C3D2E;
+    --card-text-title: #2A2421;
+    --card-text-author: #5C3D2E;
+    --card-text-metrics: #9E8E81;
+    --card-text-time: #a89383;
+  --color-hotfontcolor: #5C3D2E;
+
+
+  /* Font */
+  --font-main: 'Inter', sans-serif;
+
+  /* Spacing */
+  --spacing-sm: 8px;
+  --spacing-md: 16px;
+  --spacing-lg: 24px;
+
+  /* Border */
+  --radius: 8px;
+}
+
+.trendingZone {
+    --card-text-title: rgba(255, 255, 255, 0.95);
+    --card-text-author: rgba(255, 255, 255, 0.6);
+    --card-text-metrics: rgba(255, 255, 255, 0.45);
+}

@@ -1,0 +1,79 @@
+
+.cardWrapper {
+    position: relative;
+    width: 100%;
+}
+
+.menuContainer {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    z-index: 10;
+}
+
+.menuTrigger {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    border: none;
+    background: rgba(0, 0, 0, 0.45);
+    backdrop-filter: blur(6px);
+    color: #fff;
+    cursor: pointer;
+    transition: background 0.2s;
+    padding: 0;
+}
+
+.menuTrigger:hover {
+    background: rgba(0, 0, 0, 0.7);
+}
+
+/* ── Dropdown ── */
+.dropdown {
+    position: absolute;
+    top: calc(100% + 6px);
+    right: 0;
+    background: #fff;
+    border-radius: 10px;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.14);
+    overflow: hidden;
+    min-width: 140px;
+    animation: fadeIn 0.15s ease;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(-4px); }
+    to   { opacity: 1; transform: translateY(0); }
+}
+
+.dropdownItem {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    width: 100%;
+    padding: 10px 14px;
+    border: none;
+    background: none;
+    font-size: 13px;
+    font-weight: 600;
+    color: #1a1a1a;
+    cursor: pointer;
+    text-align: left;
+    transition: background 0.15s;
+    font-family: inherit;
+}
+
+.dropdownItem:hover {
+    background: #f5f5f5;
+}
+
+.danger {
+    color: #e53935;
+}
+
+.danger:hover {
+    background: #fff0f0;
+}

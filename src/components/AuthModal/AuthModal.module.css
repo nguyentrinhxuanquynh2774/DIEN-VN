@@ -1,0 +1,182 @@
+/* src/components/Auth/AuthModal.module.css */
+
+/* 1. LAYER VIEWPORT BACKGROUND OVERLAY (CENTERS THE MODAL WINDOW) */
+.backdrop {
+    position: fixed; /* Anchors locked regardless of webpage scrolling coordinates */
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(0, 0, 0, 0.7); 
+    backdrop-filter: blur(5px); /* Smoothly frosts out backend web views */
+    
+    /* Universal layout tool combination to center child modules horizontally and vertically */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+    z-index: 99999; /* Enforces rendering depth over structural elements like cards or Navbars */
+    animation: fadeIn 0.2s ease-out;
+}
+
+/* 2. CORE LOGIN DIALOG CONTROLLER BOX */
+.modalContainer {
+    background: #1e1e1e; /* Sophisticated dark palette. Switch to #ffffff if adopting clear themes */
+    color: #ffffff;
+    width: 90%;
+    max-width: 400px; 
+    padding: 32px;
+    border-radius: 16px; 
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5); /* Adds visual layer depth */
+    position: relative;
+    animation: slideUp 0.3s cubic-bezier(0.34, 1.56, 0.64, 1); /* Bouncy presentation effect */
+}
+
+/* 3. DISMISS TRIGGER BUTTON IN THE CORNER */
+.closeBtn {
+    position: absolute;
+    top: 16px;
+    right: 20px;
+    background: none;
+    border: none;
+    color: rgba(255, 255, 255, 0.5);
+    font-size: 26px;
+    cursor: pointer;
+    transition: color 0.2s, transform 0.2s;
+    line-height: 1;
+}
+
+.closeBtn:hover {
+    color: #ffffff;
+    transform: scale(1.1);
+}
+
+/* 4. CONTENT HEADERS */
+.modalHeader h3 {
+    font-size: 22px;
+    font-weight: 600;
+    margin-bottom: 10px;
+    letter-spacing: -0.5px;
+}
+
+.modalHeader p {
+    font-size: 13px;
+    color: rgba(255, 255, 255, 0.6);
+    line-height: 1.5;
+    margin-bottom: 24px;
+}
+
+/* 5. ERROR CONTAINER TERMINAL */
+.errorBadge {
+    background: rgba(239, 68, 68, 0.15);
+    color: #ef4444;
+    padding: 10px 14px;
+    border-radius: 8px;
+    font-size: 13px;
+    margin-bottom: 16px;
+    border: 1px solid rgba(239, 68, 68, 0.25);
+    font-weight: 500;
+}
+
+/* 6. FORM FIELDS LAYOUT */
+.form {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.inputGroup {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.inputGroup label {
+    font-size: 13px;
+    font-weight: 500;
+    color: rgba(255, 255, 255, 0.7);
+}
+
+.inputGroup input {
+    background: rgba(255, 255, 255, 0.06);
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    border-radius: 8px;
+    padding: 12px 14px;
+    color: #ffffff;
+    font-size: 14px;
+    outline: none;
+    transition: all 0.2s ease;
+}
+
+/* Matches your warm brown focus theme color mappings across fields */
+.inputGroup input:focus {
+    border-color: #c4a484; 
+    background: rgba(255, 255, 255, 0.1);
+    box-shadow: 0 0 0 3px rgba(196, 164, 132, 0.15);
+}
+
+/* 7. ACTION PROCESSOR CALL-TO-ACTION BTN */
+.submitBtn {
+    background: var(--color-button, #A65E1F); /* Automatically inherits your application brand theme values */
+    color: #ffffff;
+    border: none;
+    border-radius: 25px; 
+    padding: 12px;
+    font-size: 15px;
+    font-weight: 600;
+    cursor: pointer;
+    margin-top: 10px;
+    transition: all 0.2s ease;
+}
+
+.submitBtn:hover:not(:disabled) {
+    filter: brightness(1.15);
+    transform: translateY(-1px);
+}
+
+.submitBtn:active:not(:disabled) {
+    transform: translateY(0);
+}
+
+.submitBtn:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+/* 8. INVERSE FORM REDIRECT NODE FOOTER */
+.modalFooter {
+    margin-top: 24px;
+    text-align: center;
+    font-size: 13px;
+    color: rgba(255, 255, 255, 0.5);
+}
+
+.modalFooter a {
+    color: #c4a484;
+    font-weight: 600;
+    text-decoration: none;
+    margin-left: 4px;
+    transition: color 0.2s;
+}
+
+.modalFooter a:hover {
+    color: #e5dace;
+    text-decoration: underline;
+}
+
+/* 9. SMOOTH RENDERING INTERFACE ANIMATIONS */
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+@keyframes slideUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}

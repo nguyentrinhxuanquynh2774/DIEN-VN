@@ -1,0 +1,117 @@
+.container {
+    margin-top: 80px;
+    padding: 24px 32px;
+    min-height: 100vh;
+    background: var(--color-background);
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+    align-items: center;
+}
+
+.heading {
+    text-align: center;
+    padding: 8px 0;
+}
+
+.heading h1 {
+    font-size: 28px;
+    font-weight: 800;
+    color: var(--color-hotfontcolor);
+    letter-spacing: -0.5px;
+}
+
+.heading p {
+    font-size: 14px;
+    color: rgba(0,0,0,0.4);
+    margin-top: 6px;
+}
+
+/* ── Feed grid — giống Home ── */
+.feedGrid {
+    width: 100%;
+    max-width: 1400px;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 24px;
+}
+
+/* ── Loading ── */
+.loadingWrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    height: 50vh;
+    color: var(--color-navbar);
+}
+
+.loadingDots { display: flex; align-items: center; gap: 4px; }
+.dot { animation: wave 1.2s infinite ease-in-out; }
+.dot:nth-child(1) { animation-delay: 0s; }
+.dot:nth-child(2) { animation-delay: 0.2s; }
+.dot:nth-child(3) { animation-delay: 0.4s; }
+
+@keyframes wave {
+    0%, 100% { transform: translateY(0); opacity: 0.3; }
+    50%       { transform: translateY(-10px); opacity: 1; }
+}
+
+/* ── Empty state ── */
+.emptyState {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    padding: 80px 20px;
+    text-align: center;
+    color: rgba(0,0,0,0.4);
+}
+
+.emptyIcon {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    background: rgba(0,0,0,0.05);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: rgba(0,0,0,0.25);
+    margin-bottom: 8px;
+}
+
+.emptyState p {
+    font-size: 16px;
+    font-weight: 600;
+    color: rgba(0,0,0,0.5);
+}
+
+.emptyState span {
+    font-size: 13px;
+    opacity: 0.7;
+}
+
+.exploreBtn {
+    margin-top: 8px;
+    padding: 10px 24px;
+    border-radius: 12px;
+    border: none;
+    background: var(--color-button);
+    color: #fff;
+    font-size: 13px;
+    font-weight: 700;
+    cursor: pointer;
+    font-family: inherit;
+    transition: filter 0.2s, transform 0.15s;
+}
+
+.exploreBtn:hover {
+    filter: brightness(1.1);
+    transform: scale(1.03);
+}
+
+/* ── Responsive ── */
+@media (max-width: 1024px) { .feedGrid { grid-template-columns: repeat(2, 1fr); } }
+@media (max-width: 600px)  { .feedGrid { grid-template-columns: 1fr; } .container { padding: 16px; } }

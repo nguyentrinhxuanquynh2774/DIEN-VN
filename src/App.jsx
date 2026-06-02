@@ -1,121 +1,58 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from './assets/vite.svg'
-import heroImg from './assets/hero.png'
-import './App.css'
+import './App.css';
+import { Routes, Route } from 'react-router-dom';
+import { AuthProvider, useAuth } from './context/AuthContext.jsx'; 
 
-function App() {
-  const [count, setCount] = useState(0)
+import MainLayout from './components/Layout/MainLayout/MainLayout.jsx';
+import Home from './pages/Home/Home.jsx';
+import Following from './pages/Following/Following.jsx';
+import Explore from './pages/Explore/Explore.jsx';
+import Detail from './pages/Detail/Detail.jsx';
+import Profile from './pages/Profile/Profile.jsx';
+import Login from './pages/Login/Login.jsx';
+import Register from './pages/Register/Register.jsx';
+import ProtectedRoute from './components/Common/ProtectedRoute/ProtectedRoute.jsx'; 
+import AuthModal from './components/AuthModal/AuthModal.jsx'; 
+
+function AppContent() {
+  const { showAuthModal, setShowAuthModal } = useAuth(); 
 
   return (
-    <>
-      <section id="center">
-        <div className="hero">
-          <img src={heroImg} className="base" width="170" height="179" alt="" />
-          <img src={reactLogo} className="framework" alt="React logo" />
-          <img src={viteLogo} className="vite" alt="Vite logo" />
-        </div>
-        <div>
-          <h1>Get started</h1>
-          <p>
-            Edit <code>src/App.jsx</code> and save to test <code>HMR</code>
-          </p>
-        </div>
-        <button
-          className="counter"
-          onClick={() => setCount((count) => count + 1)}
-        >
-          Count is {count}
-        </button>
-      </section>
+    <MainLayout> {/* MainLayout của em sẽ tự động render thanh Navbar cố định ở đây */}
+      <Routes>
+        {/* 🔓 Các trang CÔNG KHAI - Khách vãng lai xem thoải mái */}
+        <Route path="/"                   element={<Home />} />
+        <Route path="/post/:id"           element={<Detail />} />
+        <Route path="/profile/:userId"    element={<Profile />} />
+        <Route path="/explore"            element={<Explore />} />
+        <Route path="/login"              element={<Login />} />
+        <Route path="/register"           element={<Register />} />
 
-      <div className="ticks"></div>
+        {/* 🔒 TRANG BẢO MẬT - Gác cổng chặn lại nếu chưa có tài khoản */}
+        <Route 
+          path="/following" 
+          element={
+            <ProtectedRoute>
+              <Following />
+            </ProtectedRoute>
+          } 
+        />
+      </Routes>
 
-      <section id="next-steps">
-        <div id="docs">
-          <svg className="icon" role="presentation" aria-hidden="true">
-            <use href="/icons.svg#documentation-icon"></use>
-          </svg>
-          <h2>Documentation</h2>
-          <p>Your questions, answered</p>
-          <ul>
-            <li>
-              <a href="https://vite.dev/" target="_blank">
-                <img className="logo" src={viteLogo} alt="" />
-                Explore Vite
-              </a>
-            </li>
-            <li>
-              <a href="https://react.dev/" target="_blank">
-                <img className="button-icon" src={reactLogo} alt="" />
-                Learn more
-              </a>
-            </li>
-          </ul>
-        </div>
-        <div id="social">
-          <svg className="icon" role="presentation" aria-hidden="true">
-            <use href="/icons.svg#social-icon"></use>
-          </svg>
-          <h2>Connect with us</h2>
-          <p>Join the Vite community</p>
-          <ul>
-            <li>
-              <a href="https://github.com/vitejs/vite" target="_blank">
-                <svg
-                  className="button-icon"
-                  role="presentation"
-                  aria-hidden="true"
-                >
-                  <use href="/icons.svg#github-icon"></use>
-                </svg>
-                GitHub
-              </a>
-            </li>
-            <li>
-              <a href="https://chat.vite.dev/" target="_blank">
-                <svg
-                  className="button-icon"
-                  role="presentation"
-                  aria-hidden="true"
-                >
-                  <use href="/icons.svg#discord-icon"></use>
-                </svg>
-                Discord
-              </a>
-            </li>
-            <li>
-              <a href="https://x.com/vite_js" target="_blank">
-                <svg
-                  className="button-icon"
-                  role="presentation"
-                  aria-hidden="true"
-                >
-                  <use href="/icons.svg#x-icon"></use>
-                </svg>
-                X.com
-              </a>
-            </li>
-            <li>
-              <a href="https://bsky.app/profile/vite.dev" target="_blank">
-                <svg
-                  className="button-icon"
-                  role="presentation"
-                  aria-hidden="true"
-                >
-                  <use href="/icons.svg#bluesky-icon"></use>
-                </svg>
-                Bluesky
-              </a>
-            </li>
-          </ul>
-        </div>
-      </section>
-
-      <div className="ticks"></div>
-      <section id="spacer"></section>
-    </>
-  )
+      {/* ── HIỂN THỊ MODAL TOÀN CỤC ĐÈ LÊN TRÊN MAINLAYOUT ── */}
+      {/* Nhờ CSS position: fixed, modal sẽ phủ lên trên cả Navbar và nội dung trang con */}
+      {showAuthModal && (
+        <AuthModal onClose={() => setShowAuthModal(false)} />
+      )}
+    </MainLayout>
+  );
 }
 
-export default App
+function App() {
+  return (
+    <AuthProvider> 
+       <AppContent />
+    </AuthProvider>
+  );
+}
+
+export default App;

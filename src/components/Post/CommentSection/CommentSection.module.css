@@ -1,0 +1,293 @@
+
+.commentSection{
+    flex: 1;
+    background: rgba(255, 255, 255, 0.05);
+    padding:8px 4px;
+    display:flex;
+    flex-direction: column;
+    justify-content: space-between;
+    gap:8px;
+    min-height: 0;    
+}
+.commentSectionHeading{
+    font-size:20px;
+    padding: 4px 0px 2px 10px;
+}
+.otherCommentWrapper{
+    display:flex;
+    flex-direction: column;
+    gap:10px;
+    overflow-y: auto;      
+    flex: 1;               
+}
+.commentItem{
+    display:flex;
+    flex-direction:row;
+    gap: 12px;
+}
+.myCommentAvatar, .commentAvatar {
+    width: 40px;        
+    height: 40px;         
+    border-radius: 50%; 
+    object-fit: cover; 
+    flex-shrink: 0;      
+}
+.commentInfo{
+    display:flex;
+    flex-direction:column;
+    gap:4px;
+}
+.commentHeader{
+    display:flex;
+    flex-direction:row;
+    gap: 6px;
+}
+
+.commentName{
+    color: var(--card-text-author);
+    font-size: 16px;
+    font-weight: 600;
+}
+.commentContent{
+    display:flex;
+    flex-direction: column;
+    gap:4px;
+}
+
+.commentFooter {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+.commentTime{
+    color: var(--card-text-time);
+    font-weight: 400;
+    font-size: 12px;
+}
+.commentText{
+    font-size: 13px;
+    color: var(--card-text-title);
+    line-height:1.5;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+
+.commentText.expanded {
+  -webkit-line-clamp: unset;
+}
+.emptyComment {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    color: rgba(255, 255, 255, 0.3);
+}
+
+.emptyComment p {
+    font-size: 14px;
+    font-weight: 500;
+}
+
+.emptyComment span {
+    font-size: 12px;
+    opacity: 0.7;
+}
+.myCommentWrapper {
+    padding-top:2px;
+    position: relative;
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+    align-items: center;
+    transition: all 0.3s ease;
+    flex-shrink: 0; 
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.myCommentWrapper .myCommentAvatar {
+    width: 32px;
+    height: 32px;
+    opacity: 0.5;
+    transition: all 0.3s ease;
+}
+
+.myCommentWrapper .myCommentSubmit {
+    opacity: 0;
+    width: 0;
+    padding: 0;
+    overflow: hidden;
+    transition: all 0.3s ease;
+}
+
+.myCommentInput{
+    display:inline-block;
+    background: rgba(255, 255, 255, 0.6);
+
+    border: 1px solid #e5dace; 
+    border-radius: 20px;
+    padding: 10px;
+    width: 100%;
+    outline: none;
+    transition: border-color 0.3s;
+    font-size:14px;
+    line-height: 1.5;
+    max-height: calc(1.5em * 4 + 32px);
+    resize: none;
+    overflow-y: hidden;
+    flex: 1;
+    color:rgba(0,0,0,0.7);
+}
+
+.myCommentInput:focus {
+    border-color: #c4a484; 
+    border-radius: 12px;
+}
+.myCommentInput::placeholder {
+    color:rgba(0,0,0,0.5);
+    opacity: 1;                     
+}
+
+.myCommentInput:focus::placeholder {
+    color:rgba(0,0,0,0.4);
+    opacity: 0.3;
+    transition: color 0.3s ease;
+}
+
+.myCommentSubmit {
+    padding:12px;
+    border:none;
+    background: none;
+    cursor: pointer;
+    flex-shrink:0;
+    margin-right:4px;
+    svg{
+        stroke:var(--color-button);
+        fill:none;
+        transition: all 0.3s ease;
+    }
+}
+
+.myCommentWrapper:focus-within .myCommentAvatar {
+    width: 40px;
+    height: 40px;
+    opacity: 1;
+}
+
+.myCommentWrapper:focus-within .myCommentSubmit {
+    opacity: 1;
+    width: auto;
+}
+.myCommentSubmit:hover {
+    opacity: 1;
+    width: auto;
+    filter: brightness(1.2);
+    transform: scale(1.1);
+}
+
+.myCommentWrapper:focus-within .myCommentInput {
+    border-color: #c4a484;
+    padding: 6px;
+    color:rgba(0,0,0,0.7);
+}
+
+.replyingBadge {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 8px 4px;
+    background: rgba(143, 114, 86, 0.8);
+    border-left: 3px solid #c4a484;
+    border-radius: 4px;
+    font-size: 13px;
+    color: rgba(255,255,255,0.7);
+
+    resize: none; 
+    overflow-y: hidden; 
+    min-height: 40px;
+    line-height: 1.5;
+    font-family: inherit; 
+}
+.replyingBadge button {
+    background: none;
+    border: none;
+    color: rgba(255,255,255,0.5);
+    cursor: pointer;
+    margin-left: auto;
+}
+.replyBtn {
+    background: none;
+    border: none;
+    color: var(--color-button);
+    font-size: 12px;
+    cursor: pointer;
+    align-self: flex-start;
+    opacity: 0.7;
+    transition: opacity 0.2s ease;
+}
+.replyBtn:hover {
+    opacity: 1;
+    text-decoration: underline;
+}
+.replyItem {
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+    margin: 8px 10px;
+    padding-left: 12px;
+    position: relative;
+    padding-bottom:8px;
+}
+.replyItem::before {
+    content: "";
+    position: absolute;
+    left: 4px;
+    top: 16px;
+    width: 10px;
+    height: 20px;
+    border-left: 1px solid rgba(166, 94, 31, 0.35);  
+    border-bottom: 1px solid rgba(166, 94, 31, 0.35); 
+    background: none;
+}
+
+.replyAvatar {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    object-fit: cover;
+    flex-shrink: 0;
+}
+
+.replyTo {
+    display: inline-flex;
+    align-items: center;    
+    gap: 4px;
+    color: var(--card-text-author);
+    font-size: 16px;
+    font-weight: 600;
+}
+
+.commentItemAuthor {
+    background: rgba(166, 94, 31, 0.07);
+    border-left: 2px solid rgba(166, 94, 31, 0.4);
+    border-radius: 0 8px 8px 0;
+    padding: 6px 8px 6px 10px;
+    margin-left: -10px;
+}
+ 
+.authorBadge {
+    display: inline-flex;
+    align-items: center;
+    padding: 1px 7px;
+    border-radius: 20px;
+    background: var(--color-button, #A65E1F);
+    color: #fff;
+    font-size: 8px;
+    font-weight: 700;
+    letter-spacing: 0.4px;
+    text-transform: uppercase;
+    flex-shrink: 0;
+}

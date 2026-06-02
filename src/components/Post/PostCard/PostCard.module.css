@@ -1,0 +1,260 @@
+.card{
+    font-size: 14px;
+    width:100%;
+    max-width: 380px;
+    justify-content: flex-start;
+    background: var(--color-card);
+    display:flex;
+    flex-direction: column;
+    align-items:stretch;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.05); 
+    transition: transform 0.3s ease;  
+    border: 1px solid rgba(255, 255, 255, 0.1); 
+    border-radius: 12px;
+    cursor:pointer;
+    overflow:hidden;
+}
+.card:hover{
+    transform: translateY(-5px);
+}
+
+.cardLink {
+    display: block;
+    text-decoration: none;
+    color: inherit;
+}
+
+.imageWrapper {
+    width: 100%;
+    height: 310px;  
+    aspect-ratio: 4 / 5;       
+       background: #1a1a1a;
+
+    overflow: hidden;
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.imageWrapper img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;        
+    object-position: center;
+}
+
+.body {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    padding: 8px 10px 6px;
+    flex-grow: 1;
+}
+
+.header {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
+}
+
+.userProfile {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 10px;
+    flex: 1;
+    min-width: 0;
+}
+
+.header img {
+    width: 38px;
+    height: 38px;
+    border-radius: 50%;
+    object-fit: cover;
+    flex-shrink: 0;
+    border: 2px solid rgba(255, 255, 255, 0.15);
+}
+
+.userInfo {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+    overflow: hidden;
+}
+
+.userName {
+    color: var(--card-text-author);
+    font-size: 13px;
+    font-weight: 600;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.time {
+    color: var(--card-text-time);
+    font-size: 11px;
+    text-transform: capitalize;
+}
+
+.mainContent {
+    flex-grow: 1; 
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.caption {
+    margin: 10px;
+    flex-shrink: 0;
+    color: var(--card-text-title);
+    font-size: 13px;    
+    font-weight: 400;
+    margin-top: 2px;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+
+.description{
+    margin-top: 1em;
+    display:flex;
+    flex-direction: row;
+    flex-wrap:wrap;
+    gap: 0.5em;
+}
+.tagOccasion, .tagStyle{
+    font-size: 10px; 
+    font-weight: 600;
+    padding: 5px 10px;
+    border-radius: 20px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    cursor: pointer;
+    box-shadow: 0 2px 5px rgba(129, 59, 59, 0.1);
+}
+.tagOccasion{
+    background:  black;
+    color: white;
+} 
+.tagStyle {
+
+     background: white;
+    color: black;
+}
+
+
+.detail {
+    font-size: 12px;
+    color: rgba(0, 0, 0, 0.6);
+    margin-left: auto;
+    text-align: right;
+    padding: 6px;
+}
+
+.footer {
+    margin-top: auto;
+    cursor: default;
+}
+
+.button {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 2px;
+    padding: 8px 4px 4px;
+    border-top: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+.likeButton,
+.commentButton,
+.saveButton {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    padding: 6px 10px;
+    border-radius: 8px;
+    border: none;
+    background: none;
+    cursor: pointer;
+    font-size: 12px;
+    font-weight: 500;
+    color: rgba(0, 0, 0, 0.6); 
+    transition: background 0.2s, color 0.2s, transform 0.15s;
+    outline: none;
+}
+.count{
+    margin-left: 5px;
+    font-size: 10px;    
+    font-weight: bold;
+    color: rgba(0, 0, 0, 0.6); 
+}
+
+.likeButton:hover,
+.commentButton:hover,
+.saveButton:hover {
+    background: rgba(0, 0, 0, 0.05);
+    transform: scale(1.05);
+}
+
+.followButton {
+    margin-left: auto;         
+    padding: 5px 14px;
+    border-radius: 8px;
+    border: 1px solid var(--color-button);
+
+    cursor: pointer;
+    font-size: 12px;
+    font-weight: 600;
+    background: var(--color-button);
+    color: #fff;
+    transition: filter 0.2s, transform 0.15s;
+    outline: none;
+    white-space: nowrap;
+}
+.followButton:hover {
+    filter: brightness(1.15);
+    transform: scale(1.03);
+}
+
+.followButton.followed {
+    background: transparent;
+    border-color: rgba(0,0,0,0.2);
+    color: rgba(0,0,0,0.5);
+}
+
+.followButton.followed:hover {
+    border-color: #ff4d4d;
+    color: #ff4d4d;
+    filter: none;
+    transform: none;
+}
+
+
+.likeButton.liked{
+    color: #ff4757;
+}
+
+.saveButton.saved{
+    color: var(--color-button);
+}
+
+
+.liked svg {
+    animation: heartbeat 0.3s ease-in-out;
+}
+
+@keyframes heartbeat {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.3); }
+    100% { transform: scale(1); }
+}
+
+.card.small{
+    width: 100%; 
+}
+
