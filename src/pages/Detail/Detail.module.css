@@ -54,7 +54,6 @@
     padding: 20px;
     display: flex;
     flex-direction: column;
-    overflow-y: hidden;
     height: 100%;
     overflow-y: auto;
 }
@@ -143,8 +142,13 @@
     background: #555;
     border: 0px solid transparent; 
 }
-
 @media (max-width: 968px) {
+    .container {
+        height: auto;
+        margin-top: 70px;
+        margin-bottom: 40px;
+    }
+
     .contentWrapper {
         flex-direction: column;
         height: auto;
@@ -155,23 +159,22 @@
         padding: 20px;
         flex: none;
         width: 100%;
+        height: auto; /
     }
 
     .postImage {
         max-height: 50vh;
+        height: auto; 
     }
 
     .contentwrapperRight {
         flex: none;
         width: 100%;
-        max-height: none;
-        overflow: visible;
+        
+        height: auto; 
+        
+        overflow: visible; 
         padding: 15px;
-    }
-    
-    .container {
-        margin-top: 70px;
-        margin-bottom: 40px;
     }
 }
 
