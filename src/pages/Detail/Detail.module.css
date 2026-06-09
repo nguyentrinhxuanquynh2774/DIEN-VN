@@ -157,15 +157,16 @@
 
     .contentWrapper {
         flex-direction: column;
-        height: auto;
+        height: auto !important;      
         min-height: auto;
+        overflow: visible !important;
     }
 
     .contentwrapperLeft {
         padding: 20px;
         flex: none;
         width: 100%;
-        height: auto; /
+        height: auto; 
     }
 
     .postImage {
