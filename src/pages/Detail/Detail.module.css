@@ -10,6 +10,7 @@
     flex-direction: column;
     color: var(--card-text-title);
     box-sizing:border-box;
+    overflow: hidden;
 }
 
 .contentWrapper {
@@ -84,6 +85,7 @@
     border-radius: 16px;
     margin-top: 15px;
     box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.2);
+    flex-shrink: 0;
 }
 
 .productTagsSection h3 {
