@@ -1,7 +1,7 @@
 /* src/pages/Home/Home.module.css */
 
 .pageWrapper {
-    height:100%;
+    width:100%;
     background: var(--color-background);
     display: flex;
     flex-direction: column;
