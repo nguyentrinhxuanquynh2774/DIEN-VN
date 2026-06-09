@@ -16,7 +16,7 @@
     width: 100%;
     display: flex;
     flex-direction: row;
-    height: calc(100vh - 160px);
+    min-height: calc(100vh - 160px);
     align-items: stretch; 
     gap: 20px;   
     border-radius: 20px;
@@ -52,8 +52,8 @@
     padding: 20px;
     display: flex;
     flex-direction: column;
-    max-height: calc(100vh - 160px);
-    overflow-y: auto;
+    height: calc(100vh - 160px);
+    overflow-y: hidden;
 }
 
 .postSection {
