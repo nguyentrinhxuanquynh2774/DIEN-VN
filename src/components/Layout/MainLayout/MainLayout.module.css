@@ -8,8 +8,8 @@
     color:white;
     background:var(--color-primary);
     flex:1;
-    display: flex;           /* Biến chính nó thành Flexbox để quản lý con (.container) */
-    flex-direction: column;  /* Xếp các phần tử con theo chiều dọc */
-    align-items: stretch;    /* Ép con (.container) phải phình hết chiều ngang */
+    display: flex;           
+    flex-direction: column;  
+    align-items: stretch;    
     min-height: 0;
 }
