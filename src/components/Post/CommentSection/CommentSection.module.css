@@ -6,6 +6,7 @@
     display:flex;
     flex-direction: column;
     gap:8px;
+    overflow:auto;
 }
 .commentSectionHeading{
     font-size:20px;
