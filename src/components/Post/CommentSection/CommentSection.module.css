@@ -20,8 +20,7 @@
     gap:10px;
     overflow-y: auto;      
     flex: 1;       
-    height:100%;
-    min-height: 0;
+    min-height: 300px;
 }
 .commentItem{
     display:flex;
