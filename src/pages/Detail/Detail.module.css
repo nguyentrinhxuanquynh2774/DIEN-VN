@@ -178,7 +178,7 @@
         flex: none;
         width: 100%;
         
-        height: auto;        
+        height: auto !important;        
         min-height: 200px;  
         overflow: visible;   
         padding: 15px;
