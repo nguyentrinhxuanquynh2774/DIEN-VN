@@ -180,7 +180,6 @@
         
         height: auto !important;        
         min-height: 200px;  
-        overflow: visible;   
         padding: 15px;
     }
 }
