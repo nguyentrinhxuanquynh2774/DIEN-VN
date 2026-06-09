@@ -20,7 +20,7 @@
     gap:10px;
     overflow-y: auto;      
     flex: 1;       
-    min-height: 50vh;
+    min-height: 50%;
 }
 .commentItem{
     display:flex;
