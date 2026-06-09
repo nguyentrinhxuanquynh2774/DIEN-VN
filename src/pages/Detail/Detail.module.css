@@ -9,7 +9,7 @@
     display: flex;
     flex-direction: column;
     color: var(--card-text-title);
-    border-box:box-sizing;
+    box-sizing:border-box;
 }
 
 .contentWrapper {
@@ -60,6 +60,7 @@
     padding: 20px;
     display: flex;
     flex-direction: column;
+    height:100%;
     overflow: hidden;
 }
 
