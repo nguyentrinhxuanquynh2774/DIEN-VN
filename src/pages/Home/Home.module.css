@@ -5,6 +5,7 @@
     display: flex;
     flex-direction: column;
     margin: 100px auto;
+    max-width:100%;
 }
 
 .mainContent {
@@ -16,6 +17,7 @@
     gap: 20px; 
     align-items: center; 
     box-sizing:border-box;
+    max-width:100%;
 }
 
 .trendingContainer {
@@ -154,9 +156,10 @@
     flex: 1;
     max-width: 1400px;
     display: grid;
-    grid-template-columns: repeat(4, 1fr);
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    box-sizing: border-box;
+    max-width: 100%;
     gap: 24px;
-    min-width: 0;
 }
 
 .loadingWrapper {
@@ -180,8 +183,15 @@
     .trendingContainer { width: 95%; }
     .carouselNavBtn { display: none; }
     .carouselItem { flex: 0 0 170px; }
-    .feedGrid { grid-template-columns: repeat(2, 1fr); }
+    .feedGrid {
+        grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+        padding: 0 15px;
+    }
 }
 @media (max-width: 600px) {
-    .feedGrid { display: flex; flex-direction: column; align-items: center; justify-content: center; width: 100%; }
+    .feedGrid { 
+        display: grid; 
+        grid-template-columns: 1fr;
+        padding: 0 10px;
+    }
 }
